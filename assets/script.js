@@ -6,48 +6,45 @@ var currentDay = $("#currentDay");
 currentDay.text(today);
 
 
-
 $(document).ready(function () {
+  sucessmsg.hide('hide');
 
-$("#9 .description").val(localStorage.getItem(9));
-$("#10 .description").val(localStorage.getItem(10));
-$("#11 .description").val(localStorage.getItem(11));
-$("#12 .description").val(localStorage.getItem(12));
-$("#13 .description").val(localStorage.getItem(13));
-$("#14 .description").val(localStorage.getItem(14));
-$("#15 .description").val(localStorage.getItem(15));
-$("#16 .description").val(localStorage.getItem(16));
-$("#17 .description").val(localStorage.getItem(17));
+  $("#9 .description").val(localStorage.getItem(9));
+  $("#10 .description").val(localStorage.getItem(10));
+  $("#11 .description").val(localStorage.getItem(11));
+  $("#12 .description").val(localStorage.getItem(12));
+  $("#13 .description").val(localStorage.getItem(13));
+  $("#14 .description").val(localStorage.getItem(14));
+  $("#15 .description").val(localStorage.getItem(15));
+  $("#16 .description").val(localStorage.getItem(16));
+  $("#17 .description").val(localStorage.getItem(17));
 
   $(".saveBtn").on('click', function () {
-
     var textStore = $(this).parent().children(".description").val();
     var time = $(this).parent().attr("id");
     localStorage.setItem(time, textStore);
-  
-    
-  })
 
-  
+
+    sucessmsg.slideDown('slow');
+    sucessmsg.delay(1000).slideUp('slow');
+
+  })
 
 
 })
-
-
-
 
 
 var past = $(".past");
 var present = $(".present");
 var future = $(".future");
 
-var colorChange = $(".description");
+var container = $(".container-lg");
+var sucessmsg = $('<div>', {
+  'class': "alert alert-success text-center ", 'role': "alert,",
+  'text': "You have successfully added/changed the event to local storage ✔"
+});
 
-
-// noteText.children().eq(0).text();
-// startHour = dayjs().hour(9 ,'A');
-// endHour = dayjs().hour(18,'A');
-
+container.append(sucessmsg);
 
 
 hourID = 8;
@@ -71,7 +68,7 @@ for (i = 0; i < 9; i++) {
   });
   descriptionCol = $('<textarea>', {
     'class': 'col-8 col-md-10 description',
-    'rows': '3',
+    'rows': '3', 'color': 'black'
   });
   var saveBtn = $('<button>', {
     'class': 'btn saveBtn col-2 col-md-1',
@@ -92,8 +89,5 @@ for (i = 0; i < 9; i++) {
   } else {
     descriptionCol.addClass("future")
   }
-
-
-
 
 }
