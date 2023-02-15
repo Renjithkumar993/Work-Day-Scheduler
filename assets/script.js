@@ -91,3 +91,12 @@ for (i = 0; i < 9; i++) {
   }
 
 }
+
+
+
+$(".btn-primary").on('click', function(){
+
+ localStorage.clear();
+ location.reload();
+ 
+})
